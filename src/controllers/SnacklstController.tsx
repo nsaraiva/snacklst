@@ -28,6 +28,15 @@ function SnacklstController(){
                 return item;
             }));
         }
+
+        function deleteComment(id: Uuid, commentId: Uuid){
+            setSnacklst(snacklst.map(item => {
+                if(item.id === id){
+                    item.comments = item.comments.filter(comment => comment.id !== commentId);
+                }
+                return item;
+            }));
+        }
         
     console.log(snacklst);
 
@@ -36,6 +45,7 @@ function SnacklstController(){
             <button onClick={addItem}>Add Item</button>
             <button onClick={() =>deleteItem(snacklst[0].id as Uuid)}>Delete Item</button>
             <button onClick={() =>addComment(snacklst[0].id as Uuid, {id: 'TestId', text: 'Comentário', userId: 'Eu mesmo'})}>Add Comment</button>
+            <button onClick={() =>deleteComment(snacklst[0].id as Uuid, snacklst[0].comments[0].id as Uuid )}>Remove Comment</button>
         </div>
     );
 }
