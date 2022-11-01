@@ -46,6 +46,15 @@ function SnacklstController(){
                 return item;
             }));
         }
+
+        function downVote(id: Uuid){
+            setSnacklst(snacklst.map(item => {
+                if(item.id === id){
+                    item.votes--;
+                }
+                return item;
+            }));
+        }
         
     console.log(snacklst);
 
@@ -53,9 +62,10 @@ function SnacklstController(){
         <div>
             <button onClick={addItem}>Add Item</button>
             <button onClick={() =>deleteItem(snacklst[0].id as Uuid)}>Delete Item</button>
-            <button onClick={() =>addComment(snacklst[0].id as Uuid, {id: 'TestId', text: 'Comentário', userId: 'Eu mesmo'})}>Add Comment</button>
+            <button onClick={() =>addComment(snacklst[0].id as Uuid, {id: 'TestId', text: 'Comment...', userId: 'Eu mesmo'})}>Add Comment</button>
             <button onClick={() =>deleteComment(snacklst[0].id as Uuid, snacklst[0].comments[0].id as Uuid )}>Remove Comment</button>
             <button onClick={() =>upVote(snacklst[0].id as Uuid)}>Give a like</button>
+            <button onClick={() =>downVote(snacklst[0].id as Uuid)}>Remove like</button>
         </div>
     );
 }
