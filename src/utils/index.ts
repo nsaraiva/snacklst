@@ -1,3 +1,4 @@
-import { GetNewUuid } from './uuid';
+import { getNewUuid } from './uuid/getNewUuid';
+import type { Uuid } from './uuid/Uuid';
 
-export { GetNewUuid };
+export { Uuid, getNewUuid };

@@ -1,11 +1,18 @@
-import SnacklstController from './controllers/SnacklstController';
 import './App.css';
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Snacklst from './app/pages/snacklst/snacklst';  
+import Shared from './app/pages/shared';
 
 function App() {
   return (
-    <div className="App">
-      <SnacklstController />
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Shared />}>
+        <Route index element={<Snacklst />} />
+      </Route>
+    </Routes>
+    </BrowserRouter>
   );
 }
 

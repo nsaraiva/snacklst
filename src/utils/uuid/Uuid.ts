@@ -1,0 +1,1 @@
+export type Uuid = string & { readonly _: unique symbol };
